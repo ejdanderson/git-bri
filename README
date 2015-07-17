@@ -2,8 +2,11 @@ git-bri or Git Branch Inspector is a tool to give you a better understanding of 
 
 # Installation
 
-1. Add the file to your path, a simple way to do this is:
+1. Ensure that git-bri is executable: `sudo chmod 755 git-bri`
+2. Add the file to your path, a simple way to do this is:
 `sudo ln -s "$PWD"/git-bri /usr/bin/git-bri`
+
+
 
 You can also setup a git alias:
 bri = "!f() { git-bri $@ }; f "

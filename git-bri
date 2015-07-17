@@ -1,0 +1,57 @@
+#!/bin/sh
+#!/usr/bin/perl
+
+index=0;
+inarray() {
+	local needle=$1;
+	local haystack="$2[@]";
+	
+	for val in "${!haystack}"; do
+		if [ $val == $needle ]; then
+			return 0;
+		fi
+	done
+	return 1;
+}
+
+locflag='-r';
+branchname='';
+while getopts la OPTION 
+do
+	case $OPTION in
+		l)
+			if [ $locflag == '-a' ]; then
+				echo "-l incompatible with -a"
+				exit
+			fi
+			locflag='  '
+			;;
+		a)
+			if [ $locflag == '' ]; then
+				echo "-a incompatible with -l"
+				exit
+			fi
+			locflag='-a'
+			;;
+		*)
+			echo 'usage: `git-brd -l|-a`'
+			exit
+			;; 
+	esac
+done
+
+for branch in $(git branch $branchname $locflag --merged | perl -pe 's/^  (.*)$/\1/'); do
+	mergedarr[$index]=$branch;
+	index=$index+1;
+done
+
+for x in $(git branch $locflag | perl -pe 's/^..(.+?)( ->.*)?$/\1/'); do
+	y=`git show --pretty=format:"%H" $x | head -n1`;
+	merged="%C(red)NOT MERGED"
+	if `inarray $x mergedarr`; then
+		merged="%C(green)MERGED"
+	fi
+	echo `git show --pretty=format:"%C(cyan)%ci %C(white)%cr %C(cyan)%cn $merged %Creset" $x | head -n 1`$x;
+done | sort -r
+
+
