@@ -15,7 +15,6 @@ inarray() {
 }
 
 locflag='-r';
-branchname='';
 while getopts la OPTION 
 do
 	case $OPTION in
@@ -40,7 +39,7 @@ do
 	esac
 done
 
-for branch in $(git branch $branchname $locflag --merged | perl -pe 's/^  (.*)$/\1/'); do
+for branch in $(git branch $locflag --merged | perl -pe 's/^  (.*)$/\1/'); do
 	mergedarr[$index]=$branch;
 	index=$index+1;
 done
