@@ -5,8 +5,9 @@ git-bri or Git Branch Inspector is a tool to give you a better understanding of 
 1. Ensure that git-bri is executable: `sudo chmod 755 git-bri`
 2. Add the file to your path, a simple way to do this is:
 `sudo ln -s "$PWD"/git-bri /usr/bin/git-bri`
+3. Checkout the branch you'd like to compare other branches with (merged vs not merged) and run `git-bri`, this may take a few seconds for large repos with many branches. 
 
-You can also setup a git alias:
+You can also setup a git alias to run `git bri` instead of `git-bri`:
 
 `bri = "!f() { git-bri $@ }; f "`
 
