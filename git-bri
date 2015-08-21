@@ -33,7 +33,7 @@ do
 			locflag='-a'
 			;;
 		*)
-			echo 'usage: `git-brd -l|-a`'
+			echo 'usage: `git-bri -l|-a`'
 			exit
 			;; 
 	esac
