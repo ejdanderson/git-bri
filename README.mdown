@@ -1,11 +1,11 @@
-git-bri or Git Branch Inspector is a tool to give you a better understanding of all your branches. It will sort all your branches by date, show you who the last person to commit to said branch was and whether or not its beeen merged into the current branch. 
+git-bri or Git Branch Inspector is a tool to give you a better understanding of all your branches. It will sort all your branches by date, show you who the last person to commit to said branch was and whether or not its beeen merged into the current branch.
 
 # Installation
 
 1. Ensure that git-bri is executable: `sudo chmod 755 git-bri`
 2. Add the file to your path, a simple way to do this is by opening the git-bri directory and running:
-`sudo ln -s "$PWD"/git-bri /usr/bin/git-bri`
-3. Checkout the branch you'd like to compare other branches with (merged vs not merged) and run `git-bri`, this may take a few seconds for large repos with many branches. 
+`sudo ln -s "$PWD"/git-bri /usr/local/bin/git-bri`
+3. Checkout the branch you'd like to compare other branches with (merged vs not merged) and run `git-bri`, this may take a few seconds for large repos with many branches.
 
 You can also setup a git alias to run `git bri` instead of `git-bri`:
 
@@ -15,6 +15,6 @@ You can also setup a git alias to run `git bri` instead of `git-bri`:
 
 1. Switch to the branch you'd like to check
 2. Run the script: `git-bri`
-3. Cleanup branches 
+3. Cleanup branches
 
 The script accepts two flags `-a` and `-l`. By default, the branch inspector will look through remote branches to see if they've been mereged. `-l` will only check local branches and `-a` will check both local and remote branches.
